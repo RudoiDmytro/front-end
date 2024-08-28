@@ -10,6 +10,7 @@ import { IAuthForm } from '@/types/auth.types'
 
 import { DASHBOARD_PAGES } from '@/config/pages-url.config'
 
+import { Heading } from './Heading'
 import { Button } from './ui/button'
 import {
 	Form,
@@ -55,11 +56,8 @@ const Auth = () => {
 					className='w-1/4 m-auto shadow gradient1 rounded-xl p-4'
 					onSubmit={handleSubmit(onSubmit)}
 				>
-					<FormDescription className='text-center'>
-						<Label className='text-3xl text-card-foreground'>Authorize</Label>
-					</FormDescription>
+					<Heading title='Authorize' />
 					<FormField
-						{...register('email', { required: 'Email is required!' })}
 						control={control}
 						name='email'
 						render={({ field }) => (
@@ -67,18 +65,19 @@ const Auth = () => {
 								<FormLabel className='text-card text-md'>Email</FormLabel>
 								<FormControl>
 									<Input
+										{...register('email', { required: 'Email is required!' })}
 										placeholder='email@example.com'
 										type='email'
 										{...field}
+										value={field.value || ''}
 									/>
 								</FormControl>
 								<FormMessage />
 							</FormItem>
 						)}
 					/>
-					<hr className='mt-2 mb-1' />
+					<div className='mt-2 mb-1' />
 					<FormField
-						{...register('password', { required: 'Password is required!' })}
 						control={control}
 						name='password'
 						render={({ field }) => (
@@ -86,8 +85,12 @@ const Auth = () => {
 								<FormLabel className='text-card text-md'>Username</FormLabel>
 								<FormControl>
 									<Input
-										placeholder='Enter Password:'
+										{...register('password', {
+											required: 'Password is required!'
+										})}
+										placeholder='example'
 										{...field}
+										value={field.value || ''}
 									/>
 								</FormControl>
 								<FormMessage />
@@ -97,6 +100,7 @@ const Auth = () => {
 
 					<div className='flex rounded-md items-center w-full mt-4 gap-5 justify-center border border-card-foreground'>
 						<Button
+							type='submit'
 							variant={'outline'}
 							className='flex w-full'
 							onClick={() => setIsLoginForm(true)}
@@ -104,6 +108,7 @@ const Auth = () => {
 							Login
 						</Button>
 						<Button
+							type='submit'
 							variant={'outline'}
 							className='flex w-full'
 							onClick={() => setIsLoginForm(false)}

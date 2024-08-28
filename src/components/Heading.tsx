@@ -4,7 +4,7 @@ interface IHeading {
 
 export const Heading = ({ title }: IHeading) => {
     return <div>
-        <h1 className="text-3xl font-medium">{title}</h1>;
+        <h1 className="text-3xl font-medium text-card-foreground">{title}</h1>
         <div className="my-3 h-0.5 bg-border w-full"/>
     </div> 
 }
